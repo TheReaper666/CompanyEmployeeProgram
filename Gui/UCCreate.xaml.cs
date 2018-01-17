@@ -24,11 +24,7 @@ namespace Gui
     {
         public UCCreate()
         {
-            InitializeComponent();
-        }
-        public UCCreate(Employee SelectedEmployee)
-        {
-            InitializeComponent();
+            InitializeComponent(); 
         }
     }
 }

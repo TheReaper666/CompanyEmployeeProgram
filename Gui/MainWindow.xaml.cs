@@ -32,6 +32,7 @@ namespace Gui
         public MainWindow()
         {
             InitializeComponent();
+            DataGridEmployees.SelectedItem = null;
             ForceRefresh();
             UCC = new UCCreate();
             TabController.SelectedIndex = 0;
@@ -48,6 +49,11 @@ namespace Gui
                 btnEdit.Visibility = Visibility.Visible;
                 btnUpdate.Visibility = Visibility.Hidden;
                 TabController.SelectedIndex = 1;
+            }
+            else
+            {
+                DataGrid dg = sender as DataGrid;
+                SelectedEmployee = (Employee)dg.SelectedItem;
             }
         }
 
@@ -66,7 +72,7 @@ namespace Gui
             {
                 if (tc.SelectedItem == Tabcreate)
                 {
-                    UCCreateContent.Content = UCC = new UCCreate(SelectedEmployee);
+                    UCCreateContent.Content = UCC = new UCCreate();
                     btnUpdate.Visibility = Visibility.Hidden;
                     btnCreate.Visibility = Visibility.Visible;
                     btnEdit.Visibility = Visibility.Hidden;

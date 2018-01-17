@@ -24,7 +24,7 @@ namespace IO
             set
             {
                 if (value != ConnectionString)
-                {
+                { 
                     _ConnectionString = value;
                     myConnection = new SqlConnection(_ConnectionString);
                 }
