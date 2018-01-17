@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Entities;
 
 namespace Gui
 {
@@ -20,9 +21,44 @@ namespace Gui
     /// </summary>
     public partial class UCUpdate : UserControl
     {
-        public UCUpdate()
+        public UCUpdate(Employee SelectedEmployee)
         {
             InitializeComponent();
+            InsertIntoBoxes(SelectedEmployee);
+        }
+        public UCUpdate(bool EditMode, Employee SelectedEmployee)
+        {
+            InitializeComponent();
+            if (EditMode == true)
+            {
+                textFirstName.IsReadOnly = false;
+                textLastName.IsReadOnly = false;
+                textTitleOfCourtesy.IsReadOnly = false;
+                textTitle.IsReadOnly = false;
+                DPHireDate.IsEnabled = true;
+                textSex.IsReadOnly = false;
+                textPosition.IsReadOnly = false;
+                InsertIntoBoxes(SelectedEmployee);
+            }
+        }
+
+        public void InsertIntoBoxes(Employee SelectedEmployee)
+        {
+            textFirstName.Text = SelectedEmployee.FirstName;
+            textLastName.Text = SelectedEmployee.LastName;
+            textTitleOfCourtesy.Text = SelectedEmployee.TitleOfCourtesy;
+            textTitle.Text = SelectedEmployee.Title;
+            DPHireDate.SelectedDate = SelectedEmployee.HireDate;
+            if (SelectedEmployee.Sex == "Male")
+            {
+                textSex.SelectedIndex = 0;
+            }
+            else if (SelectedEmployee.Sex == "Female")
+            {
+                textSex.SelectedIndex = 1;
+            }
+            textPosition.Text = SelectedEmployee.Position;
+            textIsHourlyPaided.IsChecked = SelectedEmployee.IsHourlyPaided;
         }
     }
 }

@@ -41,7 +41,6 @@ namespace Bizz
                 Employee Employer = new Employee(Id, FirstName, LastName, TitleOfCourtesy, Title, Position, IsHourlyPaided, EmployeeId, HireDate, Sex);
                 OCEmployees.Add(Employer);
             }
-
             return OCEmployees;
         }
 

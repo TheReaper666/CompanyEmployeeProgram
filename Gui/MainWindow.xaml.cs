@@ -25,30 +25,35 @@ namespace Gui
     {
         BizzFunctions BF = new BizzFunctions();
         ObservableCollection<Employee> OCEmployees;
+        Employee SelectedEmployee;
         UCCreate UCC;
         UCUpdate UCU;
+        bool EditMode;
         public MainWindow()
         {
             InitializeComponent();
-            OCEmployees = BF.GetAllEmployees();
-            DataGridEmployees.DataContext = OCEmployees;
-            DataGridEmployees.UnselectAll();
+            ForceRefresh();
+            UCC = new UCCreate();
             TabController.SelectedIndex = 0;
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
-        }
-
-        private void BtnDelete_Click(object sender, RoutedEventArgs e)
-        {
-
+            if (DataGridEmployees.SelectedItem != null)
+            {
+                DataGrid dg = sender as DataGrid;
+                SelectedEmployee = (Employee)dg.SelectedItem;
+                UCUpdateContent.Content = UCU = new UCUpdate(SelectedEmployee);
+                btnCreate.Visibility = Visibility.Hidden;
+                btnEdit.Visibility = Visibility.Visible;
+                btnUpdate.Visibility = Visibility.Hidden;
+                TabController.SelectedIndex = 1;
+            }
         }
 
         private void BtnExit_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Close Application?", "Quit?", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Close Application?", "Quit", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 this.Close();
             }
@@ -61,7 +66,7 @@ namespace Gui
             {
                 if (tc.SelectedItem == Tabcreate)
                 {
-                    UCCreateContent.Content = UCC;
+                    UCCreateContent.Content = UCC = new UCCreate(SelectedEmployee);
                     btnUpdate.Visibility = Visibility.Hidden;
                     btnCreate.Visibility = Visibility.Visible;
                     btnEdit.Visibility = Visibility.Hidden;
@@ -72,7 +77,8 @@ namespace Gui
                 {
                     if (DataGridEmployees.SelectedItem != null)
                     {
-                        UCUpdateContent.Content = UCU = new UCUpdate();
+                        UCUpdateContent.Content = UCU = new UCUpdate(SelectedEmployee);
+                        TabUpdate.Header = "View Employee";
                         btnCreate.Visibility = Visibility.Hidden;
                         btnEdit.Visibility = Visibility.Visible;
                         btnUpdate.Visibility = Visibility.Hidden;
@@ -87,17 +93,36 @@ namespace Gui
             }
         }
 
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            EditMode = true;
+            TabUpdate.Header = "Update Employee";
+            UCUpdateContent.Content = UCU = new UCUpdate(EditMode, SelectedEmployee);
+            btnEdit.Visibility = Visibility.Hidden;
+            btnUpdate.Visibility = Visibility.Visible;
+        }
+
+        private void BtnForceRefresh_Click(object sender, RoutedEventArgs e)
+        {
+            DataGridEmployees.UnselectAll();
+            TabController.SelectedIndex = 0;
+            TabUpdate.Header = "View Employee";
+            ForceRefresh();
+        }
+        private void ForceRefresh()
+        {
+            OCEmployees = BF.GetAllEmployees();
+            DataGridEmployees.DataContext = OCEmployees;
+        }
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
 
         }
-
-        private void btnEdit_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
 
         }
