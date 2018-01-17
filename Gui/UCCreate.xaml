@@ -20,7 +20,6 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
 
         </Grid.RowDefinitions>
 
@@ -45,13 +44,10 @@
             <ComboBoxItem Content="Female"/>
         </ComboBox>
 
-        <Label Grid.Row="6" Grid.Column="0" Content="Employee Id:" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0"/>
-        <TextBox Grid.Row="6" x:Name="textEmployeeId" Grid.Column="1" Height="30" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,10,0"/>
+        <Label Grid.Row="6" Grid.Column="0" Content="Position:" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0"/>
+        <TextBox Grid.Row="6" x:Name="textPosition" Grid.Column="1" Height="30" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,10,0"/>
 
-        <Label Grid.Row="7" Grid.Column="0" Content="Position:" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0"/>
-        <TextBox Grid.Row="7" x:Name="textPosition" Grid.Column="1" Height="30" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,10,0"/>
-
-        <Label Grid.Row="8" Grid.Column="0" Content="Is Hourly Paided:" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0"/>
-        <CheckBox Grid.Row="8" x:Name="textIsHourlyPaided" Grid.Column="1" Height="30" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,10,0" HorizontalAlignment="Left"/>
+        <Label Grid.Row="7" Grid.Column="0" Content="Is Hourly Paided:" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0"/>
+        <CheckBox Grid.Row="7" x:Name="textIsHourlyPaided" Grid.Column="1" Height="30" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,10,0" HorizontalAlignment="Left"/>
     </Grid>
 </UserControl>
