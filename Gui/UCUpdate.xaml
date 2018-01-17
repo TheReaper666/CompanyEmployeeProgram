@@ -47,6 +47,6 @@
         <TextBox Grid.Row="6" x:Name="textPosition" Grid.Column="1" Height="30" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,10,0" IsReadOnly="True"/>
 
         <Label Grid.Row="7" Grid.Column="0" Content="Is Hourly Paided:" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0"/>
-        <CheckBox Grid.Row="7" x:Name="textIsHourlyPaided" Grid.Column="1" Height="30" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,10,0" HorizontalAlignment="Left" IsHitTestVisible="False"/>
+        <CheckBox Grid.Row="7" x:Name="textIsHourlyPaided" Grid.Column="1" Height="30" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,10,0" HorizontalAlignment="Left" IsHitTestVisible="False" AllowDrop="False"/>
     </Grid>
 </UserControl>

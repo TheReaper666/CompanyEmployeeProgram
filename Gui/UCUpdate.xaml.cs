@@ -21,6 +21,7 @@ namespace Gui
     /// </summary>
     public partial class UCUpdate : UserControl
     {
+        // fix when you select a gender.
         public UCUpdate(Employee SelectedEmployee)
         {
             InitializeComponent();
@@ -38,6 +39,7 @@ namespace Gui
                 DPHireDate.IsEnabled = true;
                 textSex.IsReadOnly = false;
                 textPosition.IsReadOnly = false;
+                textSex.AllowDrop = true;
                 InsertIntoBoxes(SelectedEmployee);
             }
         }
