@@ -19,12 +19,12 @@
                 </Grid.RowDefinitions>
                 <DataGrid x:Name="DataGridEmployees" Grid.Row="0" Margin="5" SelectionChanged="DataGrid_SelectionChanged" ColumnWidth="1*" ItemsSource="{Binding}" IsReadOnly="True" AutoGenerateColumns="False">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Firstname" Width="*" Binding="{Binding Path=FirstName}"/>
-                        <DataGridTextColumn Header="Lastname" Width="*" Binding="{Binding Path=LastName}"/>
-                        <DataGridTextColumn Header="Sex" Width="*" Binding="{Binding Path=Sex}"/>
-                        <DataGridTextColumn Header="Position" Width="*" Binding="{Binding Path=Position}"/>
-                        <DataGridTextColumn Header="Title" Width="*" Binding="{Binding Path=Title}"/>
-                        <DataGridTextColumn Header="Title of Courtesy" Width="*" Binding="{Binding Path=TitleOfCourtesy}"/>
+                        <DataGridTextColumn Header="Fornavn" Width="*" Binding="{Binding Path=FirstName}"/>
+                        <DataGridTextColumn Header="Efternavn" Width="*" Binding="{Binding Path=LastName}"/>
+                        <DataGridTextColumn Header="Køn" Width="*" Binding="{Binding Path=Sex}"/>
+                        <DataGridTextColumn Header="Ansættelsesform" Width="*" Binding="{Binding Path=Position}"/>
+                        <DataGridTextColumn Header="Titel" Width="*" Binding="{Binding Path=Title}"/>
+                        <DataGridTextColumn Header="Tiltaleform" Width="*" Binding="{Binding Path=TitleOfCourtesy}"/>
                     </DataGrid.Columns>
                 </DataGrid>
                 <Grid Grid.Row="1">
@@ -33,13 +33,13 @@
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="4*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Width="100" Grid.Column="0" Content="Delete User" Margin="30,10,30,10" HorizontalAlignment="Right" Click="BtnDelete_Click"/>
-                    <Button Width="100" Grid.Column="1" Content="Force Refresh" Margin="30,10,30,10" HorizontalAlignment="Center" Click="BtnForceRefresh_Click"/>
-                    <Button Width="100" Grid.Column="2" Content="Exit Panel" Margin="30,10,30,10" HorizontalAlignment="Left" Click="BtnExit_Click"/>
+                    <Button Width="100" Grid.Column="0" Content="Slet Medarbejder" Margin="30,10,30,10" HorizontalAlignment="Right" Click="BtnDelete_Click"/>
+                    <Button Width="100" Grid.Column="1" Content="Genindlæs" Margin="30,10,30,10" HorizontalAlignment="Center" Click="BtnForceRefresh_Click"/>
+                    <Button Width="100" Grid.Column="2" Content="Luk Program" Margin="30,10,30,10" HorizontalAlignment="Left" Click="BtnExit_Click"/>
                 </Grid>
             </Grid>
         </GroupBox>
-        <GroupBox Grid.Column="1" Header="Informations">
+        <GroupBox Grid.Column="1" Header="Informationer">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="8*"/>

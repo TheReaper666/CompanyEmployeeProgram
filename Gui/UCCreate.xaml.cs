@@ -22,9 +22,19 @@ namespace Gui
     /// </summary>
     public partial class UCCreate : UserControl
     {
+        public List<string> comboboxListItems = new List<string>();
         public UCCreate()
         {
-            InitializeComponent(); 
+            InitializeComponent();
+            //comboboxListItems.Add("Mand");
+            //comboboxListItems.Add("Kvinde");
+            //textSex.ItemsSource = comboboxListItems;
+        }
+
+        private void textSex_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            //string Selecteditem = sender as string;
+            //textSex.DisplayMemberPath = (string)Selecteditem;
         }
     }
 }
