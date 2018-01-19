@@ -14,6 +14,7 @@ namespace Bizz
     public class BizzFunctions
     {
         ObservableCollection<Employee> OCEmployees;
+        List<string> EmployeePostions;
         DBConnections DBC;
 
         public BizzFunctions()
@@ -35,13 +36,24 @@ namespace Bizz
                 string Title = reader["Title"].ToString();
                 string Position = reader["Position"].ToString();
                 bool IsHourlyPaided = Convert.ToBoolean(reader["IsHourlyPaid"]);
-                int EmployeeId = Convert.ToInt32(reader["EmployeeId"]);
                 DateTime HireDate = Convert.ToDateTime(reader["HireDate"]);
                 string Sex = reader["Sex"].ToString();
-                Employee Employer = new Employee(Id, FirstName, LastName, TitleOfCourtesy, Title, Position, IsHourlyPaided, EmployeeId, HireDate, Sex);
+                Employee Employer = new Employee(Id, FirstName, LastName, TitleOfCourtesy, Title, Position, IsHourlyPaided, HireDate, Sex);
                 OCEmployees.Add(Employer);
             }
             return OCEmployees;
+        }
+        public List<string> GetAllPostions()
+        {
+            DataTable dt = DBC.DTGetAllPositons();
+            EmployeePostions = new List<string>();
+            DataTableReader reader = new DataTableReader(dt);
+            while (reader.Read())
+            {
+                string Postion = reader["Position"].ToString();
+                EmployeePostions.Add(Postion);
+            }
+            return EmployeePostions;
         }
     }
 }

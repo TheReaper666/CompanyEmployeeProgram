@@ -15,11 +15,10 @@ namespace Entities
         private string _Title;
         private string _Position;
         private bool _IsHourlyPaided;
-        private int _EmployeeId;
         private DateTime _HireDate;
         private string _Sex;
 
-        public Employee(int Id, string FirstName, string LastName, string TitleOfCourtesy, string Title, string Position, bool IsHourlyPaided, int EmployeeId, DateTime HireDate, string Sex)
+        public Employee(int Id, string FirstName, string LastName, string TitleOfCourtesy, string Title, string Position, bool IsHourlyPaided, DateTime HireDate, string Sex)
         {
             this.Id = Id;
             this.FirstName = FirstName;
@@ -28,7 +27,6 @@ namespace Entities
             this.Title = Title;
             this.Position = Position;
             this.IsHourlyPaided = IsHourlyPaided;
-            this.EmployeeId = EmployeeId;
             this.HireDate = HireDate;
             this.Sex = Sex;
         }
@@ -108,17 +106,6 @@ namespace Entities
             set
             {
                 _IsHourlyPaided = value;
-            }
-        }
-        public int EmployeeId
-        {
-            get
-            {
-                return _EmployeeId;
-            }
-            set
-            {
-                _EmployeeId = value;
             }
         }
         public DateTime HireDate

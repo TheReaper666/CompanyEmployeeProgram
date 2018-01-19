@@ -76,14 +76,9 @@ namespace IO
             try
             {
                 OpenDB();
-                // command er en instans af SqlCommand som er initialiseret med 
-                // strSql (Sql udtrykket) og myConnection. 
                 using (SqlCommand command = new SqlCommand(strSql, myConnection))
-                // adapter er en instans af SqlDataAdapter som er initialiseret til at
-                // håndtere de data som command vil returnere ved eksekvering.
                 using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                 {
-                    // adapter overfører data til dtRes som er af datatypen DataTable
                     adapter.Fill(dtRes);
                 }
                 CloseDB();

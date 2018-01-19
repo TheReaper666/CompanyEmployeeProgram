@@ -25,16 +25,19 @@ namespace Gui
     {
         BizzFunctions BF = new BizzFunctions();
         ObservableCollection<Employee> OCEmployees;
+        List<string> EmployeePositions;
         Employee SelectedEmployee;
         UCCreate UCC;
         UCUpdate UCU;
         bool EditMode;
+        string currenttab = string.Empty;
         public MainWindow()
         {
             InitializeComponent();
+            EmployeePositions = BF.GetAllPostions();
             DataGridEmployees.SelectedItem = null;
             ForceRefresh();
-            UCC = new UCCreate();
+            UCC = new UCCreate(EmployeePositions);
             TabController.SelectedIndex = 0;
         }
 
@@ -72,12 +75,17 @@ namespace Gui
             {
                 if (tc.SelectedItem == Tabcreate)
                 {
-                    UCCreateContent.Content = UCC = new UCCreate();
+                    if (currenttab == "Update")
+                    {
+                        UCC = new UCCreate(EmployeePositions);
+                    }
+                    UCCreateContent.Content = UCC;
                     btnUpdate.Visibility = Visibility.Hidden;
                     btnCreate.Visibility = Visibility.Visible;
                     btnEdit.Visibility = Visibility.Hidden;
                     DataGridEmployees.UnselectAll();
                     TabController.SelectedIndex = 0;
+                    currenttab = "Create";
                 }
                 if (tc.SelectedItem == TabUpdate)
                 {
@@ -89,11 +97,13 @@ namespace Gui
                         btnEdit.Visibility = Visibility.Visible;
                         btnUpdate.Visibility = Visibility.Hidden;
                         TabController.SelectedIndex = 1;
+                        currenttab = "Update";
                     }
                     else if (DataGridEmployees.SelectedItem == null)
                     {
                         MessageBox.Show("\tYou cant update anything,\nwhen you havent selected an item from the list","Warning!");
                         TabController.SelectedIndex = 0;
+                        currenttab = string.Empty;
                     }
                 }
             }
@@ -118,6 +128,7 @@ namespace Gui
         private void ForceRefresh()
         {
             OCEmployees = BF.GetAllEmployees();
+            UCC = new UCCreate(EmployeePositions);
             DataGridEmployees.DataContext = OCEmployees;
         }
         private void btnUpdate_Click(object sender, RoutedEventArgs e)

@@ -39,17 +39,26 @@
         <DatePicker Grid.Row="4" x:Name="textHireDate" Grid.Column="1" Height="30" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,10,0"/>
 
         <Label Grid.Row="5" Grid.Column="0" Content="Køn:" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0"/>
-
+        <Grid Grid.Column="1" Grid.Row="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <RadioButton Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Mand"/>
+            <RadioButton Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Kvinde"/>
+        </Grid>
 
         <Label Grid.Row="6" Grid.Column="0" Content="Andsættelsesform:" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0"/>
-        <TextBox Grid.Row="6" x:Name="textPosition" Grid.Column="1" Height="30" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,10,0"/>
+        <ComboBox Grid.Row="6" x:Name="ComboBoxPosition" Grid.Column="1" Height="30" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,10,0" SelectionChanged="ComboBoxPosition_SelectionChanged"/>
 
         <Label Grid.Row="7" Grid.Column="0" Content="Er timelønnet?:" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,5,0"/>
-        <CheckBox Grid.Row="7" x:Name="textIsHourlyPaided" Grid.Column="1" Height="30" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,10,0" HorizontalAlignment="Left"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="5" VerticalAlignment="Top" Width="169" Height="30" IsReadOnly="True">
-            <ComboBoxItem Content="fdgdgdfg"/>
-            <ComboBoxItem Content="etertret"/>
-        </ComboBox>
-
+        <Grid Grid.Column="1" Grid.Row="7">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <RadioButton Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Ja"/>
+            <RadioButton Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Nej"/>
+        </Grid>
     </Grid>
 </UserControl>

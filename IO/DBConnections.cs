@@ -16,9 +16,16 @@ namespace IO
 
         public DataTable DTGetAllInfo()
         {
-            string query = "SELECT TOP (100) PERCENT Id, FirstName, LastName, TitleOfCourtesy, Title, HireDate, Sex, EmployeeId, Position, IsHourlyPaid FROM dbo.Employees ORDER BY FirstName";
+            //string query = "SELECT TOP (100) PERCENT Id, FirstName, LastName, TitleOfCourtesy, Title, HireDate, Sex, EmployeeId, Position, IsHourlyPaid FROM Employees ORDER BY FirstName";
+            string query = "SELECT Employees.Id, Employees.FirstName, Employees.LastName, Employees.TitleOfCourtesy, Employees.Title, Employees.HireDate, Employees.Sex, Employees.IsHourlyPaid, EmployeePosition.Position FROM Employees RIGHT OUTER JOIN EmployeePosition ON Employees.PositionId = EmployeePosition.Id  ORDER BY FirstName";
             return DbReturnDataTable(query);
         }
+        public DataTable DTGetAllPositons()
+        {
+            string query = "SELECT * From EmployeePosition";
+            return DbReturnDataTable(query);
+        }
+
     }
 
 }

@@ -37,9 +37,10 @@ namespace Gui
                 textTitleOfCourtesy.IsReadOnly = false;
                 textTitle.IsReadOnly = false;
                 DPHireDate.IsEnabled = true;
-                textSex.IsReadOnly = false;
-                textPosition.IsReadOnly = false;
-                textSex.AllowDrop = true;
+                RadioSexFalse.IsChecked = false;
+                RadioSexTrue.IsChecked = false;
+                RadioTimeFalse.IsChecked = false;
+                RadioTimeTrue.IsChecked = false;
                 InsertIntoBoxes(SelectedEmployee);
             }
         }
@@ -51,16 +52,28 @@ namespace Gui
             textTitleOfCourtesy.Text = SelectedEmployee.TitleOfCourtesy;
             textTitle.Text = SelectedEmployee.Title;
             DPHireDate.SelectedDate = SelectedEmployee.HireDate;
-            if (SelectedEmployee.Sex == "Male")
+            if (SelectedEmployee.Sex == "1")
             {
-                textSex.SelectedIndex = 0;
+                RadioSexFalse.IsChecked = false;
+                RadioSexTrue.IsChecked = true;
             }
-            else if (SelectedEmployee.Sex == "Female")
+            else if (SelectedEmployee.Sex == "0")
             {
-                textSex.SelectedIndex = 1;
+                RadioSexTrue.IsChecked = false;
+                RadioSexFalse.IsChecked = true;
             }
-            textPosition.Text = SelectedEmployee.Position;
-            textIsHourlyPaided.IsChecked = SelectedEmployee.IsHourlyPaided;
+
+            bool Bool = SelectedEmployee.IsHourlyPaided;
+            if (Bool == true)
+            {
+                RadioTimeFalse.IsChecked = false;
+                RadioTimeTrue.IsChecked = true;
+            }
+            else
+            {
+                RadioTimeTrue.IsChecked = false;
+                RadioTimeFalse.IsChecked = true;
+            }
         }
     }
 }
