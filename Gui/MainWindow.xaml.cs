@@ -85,7 +85,9 @@ namespace Gui
                     btnEdit.Visibility = Visibility.Hidden;
                     DataGridEmployees.UnselectAll();
                     TabController.SelectedIndex = 0;
+                    TabUpdate.Header = "View Employee";
                     currenttab = "Create";
+                    
                 }
                 if (tc.SelectedItem == TabUpdate)
                 {
@@ -98,12 +100,6 @@ namespace Gui
                         btnUpdate.Visibility = Visibility.Hidden;
                         TabController.SelectedIndex = 1;
                         currenttab = "Update";
-                    }
-                    else if (DataGridEmployees.SelectedItem == null)
-                    {
-                        MessageBox.Show("\tYou cant update anything,\nwhen you havent selected an item from the list","Warning!");
-                        TabController.SelectedIndex = 0;
-                        currenttab = string.Empty;
                     }
                 }
             }
@@ -137,7 +133,8 @@ namespace Gui
         }
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-
+            
+            new UCCreate(true);
         }
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {

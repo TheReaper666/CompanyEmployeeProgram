@@ -21,7 +21,6 @@ namespace Gui
     /// </summary>
     public partial class UCUpdate : UserControl
     {
-        // fix when you select a gender.
         public UCUpdate(Employee SelectedEmployee)
         {
             InitializeComponent();

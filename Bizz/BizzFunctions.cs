@@ -43,6 +43,10 @@ namespace Bizz
             }
             return OCEmployees;
         }
+        public void InsertIntoEmployees(Employee employer)
+        {
+
+        }
         public List<string> GetAllPostions()
         {
             DataTable dt = DBC.DTGetAllPositons();

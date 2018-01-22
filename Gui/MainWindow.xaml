@@ -49,7 +49,7 @@
                     <TabItem x:Name="Tabcreate" Header="Create Employee">
                         <UserControl x:Name="UCCreateContent"/>
                     </TabItem>
-                    <TabItem x:Name="TabUpdate" Header="View Employee">
+                    <TabItem x:Name="TabUpdate" Header="View Employee" Focusable="False">
                         <UserControl x:Name="UCUpdateContent"/>
                     </TabItem>
                 </TabControl>

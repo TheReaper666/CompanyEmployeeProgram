@@ -29,6 +29,35 @@ namespace Gui
             this.EmployeePositions = EmployeePositions;
             ComboBoxPosition.ItemsSource = EmployeePositions;
         }
+        public UCCreate(bool click)
+        {
+            InitializeComponent();
+            string firstname = textFirstName.Text;
+            string lastname = textLastName.Text;
+            string titleofcourtesy = textTitleOfCourtesy.Text;
+            string title = textTitle.Text;
+            DateTime hiredate = textHireDate.DisplayDate;
+            string sex = "";
+            if (RBMale.IsChecked == true)
+            {
+                sex = "Mand";
+            }
+            else if (RBFemale.IsChecked == true)
+            {
+                sex = "Kvinde";
+            }
+            bool ishourly = true;
+            if (RByes.IsChecked == true)
+            {
+                ishourly = true;
+            }
+            else if (RBno.IsChecked == true)
+            {
+                ishourly = false;
+            }
+            string position = ComboBoxPosition.SelectedItem.ToString();
+            Employee newEmployee = new Employee(firstname, lastname, titleofcourtesy, title, position, ishourly,hiredate, sex);
+        }
 
         private void ComboBoxPosition_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

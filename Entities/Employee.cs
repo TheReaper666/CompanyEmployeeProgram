@@ -30,6 +30,17 @@ namespace Entities
             this.HireDate = HireDate;
             this.Sex = Sex;
         }
+        public Employee(string FirstName, string LastName, string TitleOfCourtesy, string Title, string Position, bool IsHourlyPaided, DateTime HireDate, string Sex)
+        {
+            this.FirstName = FirstName;
+            this.LastName = LastName;
+            this.TitleOfCourtesy = TitleOfCourtesy;
+            this.Title = Title;
+            this.Position = Position;
+            this.IsHourlyPaided = IsHourlyPaided;
+            this.HireDate = HireDate;
+            this.Sex = Sex;
+        }
 
         public int Id
         {
