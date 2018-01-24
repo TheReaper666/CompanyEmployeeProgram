@@ -21,47 +21,58 @@ namespace Gui
     /// </summary>
     public partial class UCUpdate : UserControl
     {
-        public UCUpdate(Employee SelectedEmployee)
+        public List<string> EmployeePositions;
+        TabItem TabUpdate;
+        Employee SelectedEmployee;
+        public UCUpdate(Employee SelectedEmployee, TabItem TabUpdate, List<string> EmployeePositions)
         {
             InitializeComponent();
-            InsertIntoBoxes(SelectedEmployee);
-        }
-        public UCUpdate(bool EditMode, Employee SelectedEmployee)
-        {
-            InitializeComponent();
-            if (EditMode == true)
-            {
-                textFirstName.IsReadOnly = false;
-                textLastName.IsReadOnly = false;
-                textTitleOfCourtesy.IsReadOnly = false;
-                textTitle.IsReadOnly = false;
-                DPHireDate.IsEnabled = true;
-                RadioSexFalse.IsChecked = false;
-                RadioSexTrue.IsChecked = false;
-                RadioTimeFalse.IsChecked = false;
-                RadioTimeTrue.IsChecked = false;
-                InsertIntoBoxes(SelectedEmployee);
-            }
-        }
-
-        public void InsertIntoBoxes(Employee SelectedEmployee)
-        {
+            this.EmployeePositions = EmployeePositions;
+            ComboBoxPosition.ItemsSource = EmployeePositions;
+            this.TabUpdate = TabUpdate;
+            this.SelectedEmployee = SelectedEmployee;
             textFirstName.Text = SelectedEmployee.FirstName;
             textLastName.Text = SelectedEmployee.LastName;
             textTitleOfCourtesy.Text = SelectedEmployee.TitleOfCourtesy;
             textTitle.Text = SelectedEmployee.Title;
             DPHireDate.SelectedDate = SelectedEmployee.HireDate;
-            if (SelectedEmployee.Sex == "1")
+            checksex();
+            checkhour();
+            ComboBoxPosition.SelectedItem = SelectedEmployee.Position;
+        }
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            textFirstName.IsReadOnly = false;
+            textLastName.IsReadOnly = false;
+            textTitleOfCourtesy.IsReadOnly = false;
+            textTitle.IsReadOnly = false;
+            DPHireDate.IsEnabled = true;
+            btnEdit.Visibility = Visibility.Hidden;
+            btnUpdate.Visibility = Visibility.Visible;
+            checksex();
+            checkhour();
+            TabUpdate.Header = "Update Employee";
+        }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        public void checksex()
+        {
+            if (SelectedEmployee.Sex == "Mand")
             {
                 RadioSexFalse.IsChecked = false;
                 RadioSexTrue.IsChecked = true;
             }
-            else if (SelectedEmployee.Sex == "0")
+            else if (SelectedEmployee.Sex == "Kvinde")
             {
                 RadioSexTrue.IsChecked = false;
                 RadioSexFalse.IsChecked = true;
             }
-
+        }
+        public void checkhour()
+        {
             bool Bool = SelectedEmployee.IsHourlyPaided;
             if (Bool == true)
             {

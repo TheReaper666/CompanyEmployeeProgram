@@ -29,9 +29,9 @@ namespace Gui
             this.EmployeePositions = EmployeePositions;
             ComboBoxPosition.ItemsSource = EmployeePositions;
         }
-        public UCCreate(bool click)
+
+        private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            InitializeComponent();
             string firstname = textFirstName.Text;
             string lastname = textLastName.Text;
             string titleofcourtesy = textTitleOfCourtesy.Text;
@@ -56,12 +56,7 @@ namespace Gui
                 ishourly = false;
             }
             string position = ComboBoxPosition.SelectedItem.ToString();
-            Employee newEmployee = new Employee(firstname, lastname, titleofcourtesy, title, position, ishourly,hiredate, sex);
-        }
-
-        private void ComboBoxPosition_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            string testOfValue = e.ToString();
+            Employee newEmployee = new Employee(firstname, lastname, titleofcourtesy, title, position, ishourly, hiredate, sex);
         }
     }
 }

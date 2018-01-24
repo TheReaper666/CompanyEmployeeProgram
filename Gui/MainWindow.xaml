@@ -42,7 +42,6 @@
         <GroupBox Grid.Column="1" Header="Informationer">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="8*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <TabControl x:Name="TabController" Grid.Column="0" Margin="5,5,5,10" SelectionChanged="TCSelectionchanged">
@@ -53,11 +52,6 @@
                         <UserControl x:Name="UCUpdateContent"/>
                     </TabItem>
                 </TabControl>
-                <Grid Grid.Row="1">
-                    <Button x:Name="btnCreate" Content="Create" Margin="100,10,100,10" Visibility="Hidden" Click="btnCreate_Click"/>
-                    <Button x:Name="btnEdit" Content="Edit" Margin="100,10,100,10" Visibility="Hidden" Click="btnEdit_Click"/>
-                    <Button x:Name="btnUpdate" Content="Update" Margin="100,10,100,10" Visibility="Hidden" Click="btnUpdate_Click"/>
-                </Grid>
             </Grid>
         </GroupBox>
     </Grid>

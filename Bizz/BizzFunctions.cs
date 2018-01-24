@@ -38,7 +38,16 @@ namespace Bizz
                 bool IsHourlyPaided = Convert.ToBoolean(reader["IsHourlyPaid"]);
                 DateTime HireDate = Convert.ToDateTime(reader["HireDate"]);
                 string Sex = reader["Sex"].ToString();
-                Employee Employer = new Employee(Id, FirstName, LastName, TitleOfCourtesy, Title, Position, IsHourlyPaided, HireDate, Sex);
+                string sexConverted = string.Empty;
+                if (Sex == "0")
+                {
+                    sexConverted = "Mand";
+                }
+                else if (Sex == "1")
+                {
+                    sexConverted = "Kvinde";
+                }
+                Employee Employer = new Employee(Id, FirstName, LastName, TitleOfCourtesy, Title, Position, IsHourlyPaided, HireDate, sexConverted);
                 OCEmployees.Add(Employer);
             }
             return OCEmployees;

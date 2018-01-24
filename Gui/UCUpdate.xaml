@@ -5,13 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Gui"
              mc:Ignorable="d" 
-                         d:DesignHeight="400" d:DesignWidth="300">
+                         d:DesignHeight="500" d:DesignWidth="300">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="7*"/>
             <ColumnDefinition Width="12*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
@@ -58,6 +59,10 @@
             </Grid.ColumnDefinitions>
             <RadioButton x:Name="RadioTimeTrue" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Ja"/>
             <RadioButton x:Name="RadioTimeFalse" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Content="Nej"/>
+        </Grid>
+        <Grid Grid.Row="8" Grid.ColumnSpan="2">
+            <Button x:Name="btnEdit" Content="Edit" Margin="100,10,100,10" Visibility="Visible" Click="btnEdit_Click"/>
+            <Button x:Name="btnUpdate" Content="Update" Margin="100,10,100,10" Visibility="Hidden" Click="btnUpdate_Click"/>
         </Grid>
     </Grid>
 </UserControl>

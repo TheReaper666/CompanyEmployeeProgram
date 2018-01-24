@@ -29,7 +29,6 @@ namespace Gui
         Employee SelectedEmployee;
         UCCreate UCC;
         UCUpdate UCU;
-        bool EditMode;
         string currenttab = string.Empty;
         public MainWindow()
         {
@@ -47,10 +46,7 @@ namespace Gui
             {
                 DataGrid dg = sender as DataGrid;
                 SelectedEmployee = (Employee)dg.SelectedItem;
-                UCUpdateContent.Content = UCU = new UCUpdate(SelectedEmployee);
-                btnCreate.Visibility = Visibility.Hidden;
-                btnEdit.Visibility = Visibility.Visible;
-                btnUpdate.Visibility = Visibility.Hidden;
+                UCUpdateContent.Content = UCU = new UCUpdate(SelectedEmployee, TabUpdate, EmployeePositions);
                 TabController.SelectedIndex = 1;
             }
             else
@@ -80,9 +76,6 @@ namespace Gui
                         UCC = new UCCreate(EmployeePositions);
                     }
                     UCCreateContent.Content = UCC;
-                    btnUpdate.Visibility = Visibility.Hidden;
-                    btnCreate.Visibility = Visibility.Visible;
-                    btnEdit.Visibility = Visibility.Hidden;
                     DataGridEmployees.UnselectAll();
                     TabController.SelectedIndex = 0;
                     TabUpdate.Header = "View Employee";
@@ -93,11 +86,8 @@ namespace Gui
                 {
                     if (DataGridEmployees.SelectedItem != null)
                     {
-                        UCUpdateContent.Content = UCU = new UCUpdate(SelectedEmployee);
+                        UCUpdateContent.Content = UCU = new UCUpdate(SelectedEmployee, TabUpdate, EmployeePositions);
                         TabUpdate.Header = "View Employee";
-                        btnCreate.Visibility = Visibility.Hidden;
-                        btnEdit.Visibility = Visibility.Visible;
-                        btnUpdate.Visibility = Visibility.Hidden;
                         TabController.SelectedIndex = 1;
                         currenttab = "Update";
                     }
@@ -105,14 +95,12 @@ namespace Gui
             }
         }
 
-        private void btnEdit_Click(object sender, RoutedEventArgs e)
-        {
-            EditMode = true;
-            TabUpdate.Header = "Update Employee";
-            UCUpdateContent.Content = UCU = new UCUpdate(EditMode, SelectedEmployee);
-            btnEdit.Visibility = Visibility.Hidden;
-            btnUpdate.Visibility = Visibility.Visible;
-        }
+        //private void btnEdit_Click(object sender, RoutedEventArgs e)
+        //{
+        //    EditMode = true;
+        //    TabUpdate.Header = "Update Employee";
+        //    UCUpdateContent.Content = UCU = new UCUpdate(SelectedEmployee, TabUpdate);
+        //}
 
         private void BtnForceRefresh_Click(object sender, RoutedEventArgs e)
         {
@@ -127,15 +115,7 @@ namespace Gui
             UCC = new UCCreate(EmployeePositions);
             DataGridEmployees.DataContext = OCEmployees;
         }
-        private void btnUpdate_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
-        private void btnCreate_Click(object sender, RoutedEventArgs e)
-        {
-            
-            new UCCreate(true);
-        }
         private void BtnDelete_Click(object sender, RoutedEventArgs e)
         {
 
